@@ -1,21 +1,26 @@
 <script>
 import axios from "axios";
+import AppListCards from "./components/AppListCards.vue"
 export default {
+  components: {
+    AppListCards
+  },
   data () {
     return {
-
+      cardsArray: [],
     }
   },
   created () {
-    axios.get("https://rickandmortyapi.com/api/character").then((resp) => {
-      console.log(resp)
+    axios.get("https://rickandmortyapi.com/api/character").then((resp) => {      
+      this.cardsArray = resp.data.results;
+      console.log(this.cardsArray)
     })
   }
 }
 </script>
 
 <template>
-<h1>test</h1>
+  <AppListCards :cardsArray="cardsArray" />
 </template>
 
 <style>
