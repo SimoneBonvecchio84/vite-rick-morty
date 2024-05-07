@@ -4,16 +4,23 @@ export default {
     data() {
         return {
             store,
-            status: ["Alive", "Dead", "Unknown"],
+            status: [ "All","Alive", "Dead", "Unknown"],
         }
     }
 }
 </script>
 
 <template>
-   <select @change="$emit('filter')" v-model="store.selectedStatus" >
-        <option :value="status" v-for="curStatus in status">
-            {{ curStatus }}
-        </option>
-   </select>
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <div>
+                <select @change="$emit('filter')" v-model="store.selectedStatus">
+                     <option  :value="status" v-for="curStatus in status">
+                         {{ curStatus }}
+                     </option>                 
+                </select>
+            </div>
+        </div>
+        
+    </div>
 </template>

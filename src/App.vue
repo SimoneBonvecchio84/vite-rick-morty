@@ -8,28 +8,40 @@ export default {
     AppListCards,
     AppSearch
   },
-  data () {
+  data() {
     return {
       store,
       cardsArray: [],
-      isLoading: false,  
+      isLoading: false,
     }
   },
-  created () { 
-      this.isLoading = true;
-      axios.get("https://rickandmortyapi.com/api/character").then((resp) => {      
-        this.cardsArray = resp.data.results; 
-        this.isLoading = false;     
-      }) 
-    } 
+  created() {
+    this.isLoading = true;
+    axios.get("https://rickandmortyapi.com/api/character").then((resp) => {
+      this.cardsArray = resp.data.results;
+      this.isLoading = false;
+    })
+  },
+  methods : {
+    getStatus () {
+      // axios.get("https://rickandmortyapi.com/api/character", {
+      //   params: {
+          
+      //   }
+      // })
+      console.log("ciao");
+    }
+  }
 }
 </script>
 
-<template>  
-  <AppSearch />
+<template>
+  <div class="text-center py-5">
+    <h2 class="fw-bolder">Rick and Morty App</h2>
+  </div>
+  <AppSearch @filter="getStatus"/>
   <div v-if="isLoading">Loading...</div>
   <AppListCards :cardsArray="cardsArray" v-else />
 </template>
 
-<style>
-</style>
+<style></style>
