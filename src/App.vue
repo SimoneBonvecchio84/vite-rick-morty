@@ -16,18 +16,11 @@ export default {
     }
   },
   created() {
-    // this.isLoading = true;
-    // axios.get("https://rickandmortyapi.com/api/character").then((resp) => {
-    //   this.cardsArray = resp.data.results;
-    //   this.isLoading = false;
-    // })
     this.getStatus();
   },
   methods: {
     getStatus() {
-
       if (this.store.selectedStatus !== "All") {
-
         console.log("Get Status", this.store.selectedStatus);
         axios.get("https://rickandmortyapi.com/api/character", {
           params: {
@@ -56,4 +49,6 @@ export default {
   <AppListCards :cardsArray="cardsArray" v-else />
 </template>
 
-<style></style>
+<style>
+
+</style>
