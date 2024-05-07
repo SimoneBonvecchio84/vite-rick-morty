@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     getStatus() {
-      this.isLoading = true;
+      this.isLoading = true
       const paramsSt = {};
       if (this.store.selectedStatus !== "All") { 
         paramsSt.status = this.store.selectedStatus;  
@@ -32,6 +32,12 @@ export default {
         this.isLoading = false;
       })
 
+      //   console.log("Get Status", this.store.selectedStatus);
+      // } else {
+      //   axios.get("https://rickandmortyapi.com/api/character").then((resp) => {
+      //     this.cardsArray = resp.data.results;
+      //   })
+      // }
     }
   }
 }
