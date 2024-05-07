@@ -4,7 +4,7 @@ export default {
     data() {
         return {
             store,
-            status: [ "All","Alive", "Dead", "Unknown"],
+            status: ["All", "Alive", "Dead", "Unknown"],
         }
     }
 }
@@ -15,7 +15,7 @@ export default {
         <div class="d-flex justify-content-between">
             <div>
                 <select @change="$emit('filter')" v-model="store.selectedStatus">
-                     <option  :value="status" v-for="curStatus in status">
+                     <option  :value="curStatus" v-for="curStatus in status">
                          {{ curStatus }}
                      </option>                 
                 </select>
