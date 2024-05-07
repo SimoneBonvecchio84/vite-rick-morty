@@ -28,16 +28,10 @@ export default {
       axios.get("https://rickandmortyapi.com/api/character", {
         params: paramsSt  
       }).then((resp) => {
+        this.store.listsStCards = this.cardsArray;
         this.cardsArray = resp.data.results;
         this.isLoading = false;
       })
-
-      //   console.log("Get Status", this.store.selectedStatus);
-      // } else {
-      //   axios.get("https://rickandmortyapi.com/api/character").then((resp) => {
-      //     this.cardsArray = resp.data.results;
-      //   })
-      // }
     }
   }
 }

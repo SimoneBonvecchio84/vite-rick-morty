@@ -21,6 +21,6 @@ export default {
                 </select>
             </div>
         </div>
-        
+        <p>Mostrati {{ store.listsStCards.length }}</p>
     </div>
 </template>
