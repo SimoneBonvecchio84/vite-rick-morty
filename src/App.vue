@@ -1,26 +1,34 @@
 <script>
+import { store } from "./store";
 import axios from "axios";
-import AppListCards from "./components/AppListCards.vue"
+import AppListCards from "./components/AppListCards.vue";
+import AppSearch from "./components/AppSearch.vue"
 export default {
   components: {
-    AppListCards
+    AppListCards,
+    AppSearch
   },
   data () {
     return {
+      store,
       cardsArray: [],
+      isLoading: false,  
     }
   },
-  created () {
-    axios.get("https://rickandmortyapi.com/api/character").then((resp) => {      
-      this.cardsArray = resp.data.results;
-      console.log(this.cardsArray)
-    })
-  }
+  created () { 
+      this.isLoading = true;
+      axios.get("https://rickandmortyapi.com/api/character").then((resp) => {      
+        this.cardsArray = resp.data.results; 
+        this.isLoading = false;     
+      }) 
+    } 
 }
 </script>
 
-<template>
-  <AppListCards :cardsArray="cardsArray" />
+<template>  
+  <AppSearch />
+  <div v-if="isLoading">Loading...</div>
+  <AppListCards :cardsArray="cardsArray" v-else />
 </template>
 
 <style>
